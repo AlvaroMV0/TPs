@@ -4,10 +4,10 @@ public class LogisticaLibro
 {
     public static Libro crearLibro(String tipo, String nombre)
     {
-        return switch (tipo)
+        return switch (tipo.toLowerCase())
         {
-            case "Digital" -> new LibroDigital(nombre);
-            case "Fisico" -> new LibroFisico(nombre);
+            case "digital" -> new LibroDigital(nombre);
+            case "fisico" -> new LibroFisico(nombre);
             default -> throw new IllegalArgumentException("Tipo desconocido");
         };
     }

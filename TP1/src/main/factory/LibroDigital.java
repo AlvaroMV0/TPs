@@ -1,12 +1,15 @@
 package main.factory;
 
-public class LibroDigital extends Libro
+public class LibroDigital implements Libro
 {
+    public String nombre;
+
     @Override
     public void imprimir(){
-        System.out.println("Libro Digital");
+        System.out.println( "\""+nombre+"\" "+ "Libro Digital");
     }
     public LibroDigital(String nombre){
         this.nombre = nombre;
     }
+
 }

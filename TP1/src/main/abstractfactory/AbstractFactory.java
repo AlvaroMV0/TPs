@@ -1,4 +1,6 @@
 package main.abstractfactory;
 
-public class AbstractFactory {
+public interface AbstractFactory {
+    InterfazUI crearUI(String tipo);
+    MetodoEnvio crearMetodoEnvio(String tipo);
 }

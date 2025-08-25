@@ -1,11 +1,12 @@
 package main.factory;
 
-public class LibroFisico extends Libro
+public class LibroFisico implements Libro
 {
+    public String nombre;
     @Override
     public void imprimir()
     {
-        System.out.println("Libro Fïsico");
+        System.out.println( "\""+nombre+"\" "+ "Libro Físico");
     }
 
     public LibroFisico(String nombre){

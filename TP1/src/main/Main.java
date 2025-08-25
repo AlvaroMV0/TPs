@@ -8,13 +8,22 @@ public class Main
 {
     public static void main (String[] args)
     {
+        //TODO Implementar lógica de usuario/admin y la creación de AdminUI,UsuarioUI, y los envios
+
+
+
         //Creación de la DataBase
-        Database.getInstance();
+        Database db = Database.getInstance();
+
         //Creación y agregación de libros
-        Database.agregarLibro("Harry Potter","Fisico");
-        Database.agregarLibro("Percy Jackson","Fisico");
-        Database.agregarLibro("Thomas y sus amigos","Digital");
+        db.agregarLibro("Harry Potter","Fisico");
+        db.agregarLibro("Percy Jackson","Fisico");
+        db.agregarLibro("Thomas y sus amigos","Digital");
+
         //Impresión de libros
-        Database.listarLibros();
+        db.listarLibros();
+
+        //Para comprobar que realmente son disntitos objetos basta con la
+        //diferencia de nombres o debemos agregar algo como el object ID?
     }
 }

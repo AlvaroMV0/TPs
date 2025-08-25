@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Database
 {
-    public static ArrayList<Libro> listaLibros;
+    public ArrayList<Libro> listaLibros;
     //Con volatile para el Double-Checked Locking
     private static volatile Database instance;
     private Database()
@@ -15,16 +15,17 @@ public class Database
         this.listaLibros = new ArrayList<Libro>();
     }
     //TODO decidir si crear el libro en el momento de agregarlo o por separado
-    public static void agregarLibro(String nombreLibro, String tipoLibro)
+    public void agregarLibro(String nombreLibro, String tipoLibro)
     {
         listaLibros.add(LogisticaLibro.crearLibro(tipoLibro,nombreLibro));
     }
-    public static void listarLibros()
+    public void listarLibros()
     {
         System.out.println("La lista de libros hasta el momento está conformada por: ");
         for (int i = 0; i < listaLibros.size() ; i++)
         {
-            System.out.println(i+ ". "+ listaLibros.get(i));
+            System.out.print(i+ ". ");
+            listaLibros.get(i).imprimir();
         }
         System.out.println("Total de libros: "+ listaLibros.size());
     }
