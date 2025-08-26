@@ -9,7 +9,7 @@ public class Main
     public static void main (String[] args)
     {
         //TODO Implementar lógica de usuario/admin y la creación de AdminUI,UsuarioUI, y los envios
-
+        //TODO Agregar private a las variables de las clases
 
 
         //Creación de la DataBase
