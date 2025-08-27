@@ -11,7 +11,7 @@ public class Main
     {
         //TODO Implementar lógica de usuario/admin y la creación de AdminUI,UsuarioUI, y los envios
         //TODO Agregar private a las variables de las clases
-
+        //TODO Impresión de GUIs
 
         //Creación de la DataBase
         Database db = Database.getInstance();
@@ -23,6 +23,9 @@ public class Main
 
         //Impresión de libros
         db.listarLibros();
+
+
+        //Impresión de Usuarios
 
         Usuario usuario1 = new Usuario.Builder()
                 .nombre("Fran")

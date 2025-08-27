@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class Database
 {
-    public ArrayList<Libro> listaLibros;
+    private final ArrayList<Libro> listaLibros;
     //Con volatile para el Double-Checked Locking
     private static volatile Database instance;
     private Database()
     {
-        this.listaLibros = new ArrayList<Libro>();
+        this.listaLibros = new ArrayList<>();
     }
     //TODO decidir si crear el libro en el momento de agregarlo o por separado
     public void agregarLibro(String nombreLibro, String tipoLibro)

@@ -2,7 +2,7 @@ package main.factory;
 
 public class LibroDigital implements Libro
 {
-    public String nombre;
+    private final String nombre;
 
     @Override
     public void imprimir(){

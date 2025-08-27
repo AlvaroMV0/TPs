@@ -4,4 +4,5 @@ package main.factory;
 public interface Libro
 {
     void imprimir();
+
 }
