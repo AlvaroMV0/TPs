@@ -1,8 +1,8 @@
 package main.factory;
 
-// agregar public ?
-public interface Libro
-{
-    void imprimir();
 
+public interface Libro extends Cloneable
+{
+    String mostrarInfo();
+    public Libro clone() throws CloneNotSupportedException;
 }

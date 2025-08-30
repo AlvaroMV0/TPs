@@ -1,18 +1,26 @@
 package main.factory;
 
-import java.util.Objects;
+import lombok.AllArgsConstructor;
+
+
+@AllArgsConstructor
 
 public class LibroFisico implements Libro
 {
-    private final String nombre;
+
+    private String titulo,autor;
+    private int paginas;
+
     @Override
-    public void imprimir()
+    public String mostrarInfo()
     {
-        System.out.println("\""+nombre+"\" "+ "Libro Físico");
+        return ("Libro físico: \"" + titulo + "\" por " + autor );
     }
 
-    public LibroFisico(String nombre){
-        this.nombre = nombre;
+    @Override
+    public Libro clone() throws CloneNotSupportedException
+    {
+        return (Libro) super.clone();
     }
 
 

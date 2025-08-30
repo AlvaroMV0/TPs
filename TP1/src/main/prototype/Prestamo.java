@@ -1,7 +1,14 @@
 package main.prototype;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import main.builder.Usuario;
 import main.factory.Libro;
+
+@Getter @Setter
+@AllArgsConstructor
+
 
 public class Prestamo implements Cloneable {
     private Libro libro;
@@ -10,61 +17,21 @@ public class Prestamo implements Cloneable {
     private String fechaFin;
 
 
-    public Prestamo(Libro libro, Usuario usuario, String fechaInicio, String fechaFin) {
-        this.libro = libro;
-        this.usuario = usuario;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-    }
 
-    public Libro getLibro() {
-        return libro;
-    }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public String getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
+    // Shallowcopy
     @Override
-    public String toString() {
-        return "Prestamo " +
-                "\n libro=" + libro +
-                "\n usuario=" + usuario +
-                "\n fechaInicio='" + fechaInicio +
-                "\n  fechaFin='" + fechaFin
-                ;
+    public Prestamo clone() throws CloneNotSupportedException
+    {
+        return (Prestamo) super.clone();
     }
 
-    @Override
-    public Prestamo clone() {
-        try {
-            return (Prestamo) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+    //DeepCopy
+    // En la clase Prestamo
+    public Prestamo deepClone() throws CloneNotSupportedException {
+        Prestamo cloned = (Prestamo) super.clone();
+        cloned.setUsuario(this.usuario.clone());
+        cloned.setLibro(this.libro.clone()); // <-- AÑADIR ESTA LÍNEA
+        return cloned;
     }
 }

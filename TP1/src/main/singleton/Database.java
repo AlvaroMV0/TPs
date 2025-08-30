@@ -1,50 +1,34 @@
 package main.singleton;
 
 import main.factory.Libro;
-import main.factory.LogisticaLibro;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Database
+
+
+public enum Database
 {
-    private final ArrayList<Libro> listaLibros;
-    //Con volatile para el Double-Checked Locking
-    private static volatile Database instance;
-    private Database()
+    INSTANCE;
+    private final List<Libro> listaLibros = new ArrayList<>();
+
+
+
+    public void agregarLibro(Libro libro)
     {
-        this.listaLibros = new ArrayList<>();
+        listaLibros.add(libro);
     }
-    //TODO decidir si crear el libro en el momento de agregarlo o por separado
-    public void agregarLibro(String nombreLibro, String tipoLibro)
-    {
-        listaLibros.add(LogisticaLibro.crearLibro(tipoLibro,nombreLibro));
-    }
+
+
     public void listarLibros()
     {
         System.out.println("La lista de libros hasta el momento está conformada por: ");
-        for (int i = 0; i < listaLibros.size() ; i++)
+        int i = 0;
+        for (Libro libro : listaLibros)
         {
-            System.out.print(i+ ". ");
-            listaLibros.get(i).imprimir();
+            System.out.println(i + ". "+ libro.mostrarInfo());
+            i++;
         }
-        System.out.println("Total de libros: "+ listaLibros.size());
-    }
-
-    // -- SINGLETON --
-    //Implementación del Singleton para Database
-    //Con Double-Checked Locking para resolver concurrencia
-    public static Database getInstance()
-    {
-        if (instance ==null) // Primera verificación Sin Lock
-        {
-            synchronized (Database.class)
-            {
-                if (instance == null) //Segunda verificación
-                {
-                    instance = new Database();
-                }
-            }
-        }
-        return instance;
+        System.out.println("Total de libros: " + listaLibros.size());
     }
 }

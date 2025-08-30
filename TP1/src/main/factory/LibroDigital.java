@@ -1,15 +1,27 @@
 package main.factory;
 
+import lombok.AllArgsConstructor;
+
+
+@AllArgsConstructor
+
 public class LibroDigital implements Libro
 {
-    private final String nombre;
+    private String titulo,autor;
+    private int paginas;
 
     @Override
-    public void imprimir(){
-        System.out.println( "\""+nombre+"\" "+ "Libro Digital");
+    public String mostrarInfo()
+    {
+        return ("Libro digital: \"" + titulo + "\" por " + autor );
     }
-    public LibroDigital(String nombre){
-        this.nombre = nombre;
+
+    @Override
+    public Libro clone() throws CloneNotSupportedException
+    {
+        return (Libro) super.clone();
     }
+
+
 
 }

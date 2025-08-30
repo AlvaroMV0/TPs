@@ -2,5 +2,5 @@ package main.abstractfactory;
 
 public interface MetodoEnvio
 {
-    void calcularMetodoEnvio();
+    void enviar(String item);
 }

@@ -3,8 +3,8 @@ package main.abstractfactory;
 public class EnvioExpress implements MetodoEnvio
 {
     @Override
-    public void calcularMetodoEnvio()
+    public void enviar( String item )
     {
-        System.out.println("El envio es express");
+        System.out.println("El envio del item " + item + " es express");
     }
 }

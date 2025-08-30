@@ -3,8 +3,8 @@ package main.abstractfactory;
 public class EnvioNormal implements MetodoEnvio
 {
     @Override
-    public void calcularMetodoEnvio()
+    public void enviar( String item )
     {
-        System.out.println("El envio es normal");
+        System.out.println("El envio del item " + item + " es normal");
     }
 }
