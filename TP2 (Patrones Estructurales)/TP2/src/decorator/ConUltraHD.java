@@ -1,0 +1,18 @@
+package decorator;
+
+public class ConUltraHD extends PlanDecorador{
+
+    public ConUltraHD ( Plan plan){
+        super(plan);
+    }
+
+    @Override
+    public String descripcion() {
+        return plan.descripcion()+" + UltraHD";
+    }
+
+    @Override
+    public double costo() {
+        return plan.costo() + 500;
+    }
+}
