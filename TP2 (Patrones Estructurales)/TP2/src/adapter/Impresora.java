@@ -1,5 +1,5 @@
 package adapter;
 
 public interface Impresora {
-    void imprimir(String documento, String tipoDocumento);
+    void imprimir(String tipoDocumento, String documento);
 }

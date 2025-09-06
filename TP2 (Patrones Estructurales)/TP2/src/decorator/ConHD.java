@@ -1,5 +1,6 @@
 package decorator;
 
+//Decorador concreto, hereda del decorador abstracto e implementa su propia funcionalidad, en este caso agregar HD
 public class ConHD extends PlanDecorador{
 
     public ConHD ( Plan plan){
