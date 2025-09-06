@@ -28,9 +28,9 @@ public class Main {
         FacadeMain.main(null);
         // ----
 
-
+        //TODO: Descomentar para poder ver
         //5- Flyweight
-        FlyweightMain.main(null);
+        //FlyweightMain.main(null);
         // ----
 
 
