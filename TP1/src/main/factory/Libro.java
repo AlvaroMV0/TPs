@@ -1,8 +1,8 @@
 package main.factory;
 
 
-public interface Libro extends Cloneable
-{
+public interface Libro extends Cloneable {
     String mostrarInfo();
-    public Libro clone() throws CloneNotSupportedException;
+
+    Libro clone() throws CloneNotSupportedException;
 }

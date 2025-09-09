@@ -1,16 +1,14 @@
 package main.abstractfactory;
 
-import lombok.AllArgsConstructor;
+public class AdminUI implements InterfazUI {
+    private final String tema;
 
-@AllArgsConstructor
-
-public class AdminUI implements InterfazUI
-{
-    private String tema;
+    public AdminUI(String tema) {
+        this.tema = tema;
+    }
 
     @Override
-    public void mostrarUI()
-    {
-        System.out.println("Mostrando UI de Admin con el tema "+ tema);
+    public void mostrarUI() {
+        System.out.println("Mostrando UI de Admin con el tema " + tema);
     }
 }

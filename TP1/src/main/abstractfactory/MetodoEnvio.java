@@ -1,6 +1,5 @@
 package main.abstractfactory;
 
-public interface MetodoEnvio
-{
+public interface MetodoEnvio {
     void enviar(String item);
 }

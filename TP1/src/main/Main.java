@@ -7,71 +7,99 @@ import main.builder.Usuario;
 import main.factory.Libro;
 import main.factory.LogisticaLibroDigital;
 import main.factory.LogisticaLibroFisico;
+import main.prototype.Prestamo;
 import main.singleton.Database;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
+public class Main {
 
-        System.out.println("\n\n\n");
-
-        LogisticaLibroDigital fabricaDigital = new LogisticaLibroDigital();
-        LogisticaLibroFisico fabricaFisica = new LogisticaLibroFisico();
+    public static void main(String[] args) throws CloneNotSupportedException {
 
 
-        Libro libro1 = fabricaDigital.crearLibro("Harry Potter", "JK Rowling", 300);
 
 
-        System.out.println("------------- Database -------------");
 
-        //Creación de la DataBase
-        Database db = Database.INSTANCE;
 
-        //Creación y agregación de libros
-        //Libros digitales
-        db.agregarLibro(libro1);
-        db.agregarLibro(fabricaDigital.crearLibro("Percy Jackson", "Rick Riordan", 300));
-        //Libros Físicos
+        // --- Demostración de Factory Method y Singleton ---
+        System.out.println("\n\n------------- Factory Method y Singleton -------------");
+        Database db = Database.INSTANCE; // Se obtiene la instancia única de la base de datos (Singleton).
+        LogisticaLibroDigital fabricaDigital = new LogisticaLibroDigital(); // Fábrica de libros digitales.
+        LogisticaLibroFisico fabricaFisica = new LogisticaLibroFisico(); // Fábrica de libros físicos.
+
+        // Se crean y agregan libros a la base de datos usando las fábricas (Factory Method).
+        db.agregarLibro(fabricaDigital.crearLibro("Harry Potter", "JK Rowling", 300));
+        db.agregarLibro(fabricaDigital.crearLibro("Percy Jackson", "Rick Riordan", 288));
         db.agregarLibro(fabricaFisica.crearLibro("El Aleph", "Jorge Luis Borges", 150));
-        db.agregarLibro(fabricaFisica.crearLibro("El Señor de los Anillos", "J.R.R. Tolkien", 1200));
-        db.agregarLibro(fabricaFisica.crearLibro("Dune", "Frank Herbert", 688));
-
-
-        //Impresión de libros
         db.listarLibros();
-        System.out.println("------------------------------------\n\n");
 
 
-        System.out.println("------------- Cliente -------------");
-        // Cliente administrador
+
+
+
+
+
+        // --- Demostración de Abstract Factory ---
+        System.out.println("\n\n------------- Abstract Factory -------------");
+        Libro libroParaCliente = db.getLibro(0); // Se obtiene un libro para usar en el ejemplo.
+
+        // Se crea un cliente administrador usando la fábrica de administradores.
+        System.out.println("--- Cliente Administrador ---");
         Cliente admin = new Cliente(new AdminFactory(), "Oscuro");
-        admin.usarSistema(libro1);
+        admin.usarSistema(libroParaCliente);
 
-        // Cliente usuario normal
+        // Se crea un cliente normal usando la fábrica de usuarios.
+        System.out.println("\n--- Cliente Usuario ---");
         Cliente usuario = new Cliente(new UsuarioFactory(), "Claro");
-        usuario.usarSistema(libro1);
+        usuario.usarSistema(libroParaCliente);
 
 
-        System.out.println("-----------------------------------\n\n");
 
 
-        System.out.println("------------- Usuario -------------");
-        //Impresión de Usuarios
 
+
+        // --- Demostración de Builder ---
+        System.out.println("\n\n------------- Builder -------------");
+
+        // Se construyen objetos Usuario complejos de forma fluida (Builder).
         Usuario usuario1 = Usuario.builder()
-                .nombre("Fran")
-                .email("francisco123@gmail.com")
+                .nombre("Francisco")
+                .email("fran@mail.com")
+                .domicilio("Calle Falsa 123")
                 .build();
+
         Usuario usuario2 = Usuario.builder()
                 .nombre("Jennifer")
-                .email("Jennifer123@gmail.com")
+                .email("jen@mail.com")
                 .build();
 
-        System.out.println(usuario1);
-        System.out.println(usuario2);
+        System.out.println("Usuario 1: " + usuario1);
+        System.out.println("Usuario 2: " + usuario2);
 
-        System.out.println("-----------------------------------\n\n");
+
+
+
+
+
+        // --- Demostración de Prototype ---
+        System.out.println("\n\n------------- Prototype (Clonación Profunda) -------------");
+
+        // Se crea un objeto original para ser clonado.
+        Prestamo prestamoOriginal = new Prestamo(libroParaCliente, usuario1, "2025-09-08", "2025-09-22");
+        System.out.println("Préstamo Original:\n" + prestamoOriginal + "\n");
+
+        // Se clona el objeto original para obtener una copia independiente (Prototype).
+        Prestamo prestamoClonado = prestamoOriginal.deepClone();
+
+        // Se modifica el clon; el objeto original no se verá afectado.
+        Usuario nuevoUsuarioParaClon = Usuario.builder().nombre("Pedro").email("pedro@mail.com").build();
+        prestamoClonado.setUsuario(nuevoUsuarioParaClon);
+        prestamoClonado.setFechaFin("2025-10-01");
+
+        System.out.println("Original (sin cambios después de modificar el clon):\n" + prestamoOriginal + "\n");
+        System.out.println("Clon Profundo (modificado):\n" + prestamoClonado);
+
+
+
+
 
 
     }

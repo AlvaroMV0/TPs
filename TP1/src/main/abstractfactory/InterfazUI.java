@@ -1,6 +1,5 @@
 package main.abstractfactory;
 
-public interface InterfazUI
-{
+public interface InterfazUI {
     void mostrarUI();
 }
