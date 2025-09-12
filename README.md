@@ -2,8 +2,8 @@
 
 ## Integrantes 
 50771 Araya Tejo 
------ Castignani Francisco 
------ Martín Araceli 
+ Castignani Francisco 
+ Martín Araceli 
 50991 Moreno Álvaro 
 
 ## Explicación 
