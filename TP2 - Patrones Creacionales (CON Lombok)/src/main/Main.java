@@ -80,25 +80,36 @@ public class Main {
 
 
         // --- Demostración de Prototype ---
-        System.out.println("\n\n------------- Prototype (Clonación Profunda) -------------");
+        System.out.println("\n\n------------- Prototype --------------");
 
-        // Se crea un objeto original para ser clonado.
+
         Prestamo prestamoOriginal = new Prestamo(libroParaCliente, usuario1, "2025-09-08", "2025-09-22");
-        System.out.println("Préstamo Original:\n" + prestamoOriginal + "\n");
-
-        // Se clona el objeto original para obtener una copia independiente (Prototype).
-        Prestamo prestamoClonado = prestamoOriginal.deepClone();
-
-        // Se modifica el clon; el objeto original no se verá afectado.
-        Usuario nuevoUsuarioParaClon = Usuario.builder().nombre("Pedro").email("pedro@mail.com").build();
-        prestamoClonado.setUsuario(nuevoUsuarioParaClon);
-        prestamoClonado.setFechaFin("2025-10-01");
-
-        System.out.println("Original (sin cambios después de modificar el clon):\n" + prestamoOriginal + "\n");
-        System.out.println("Clon Profundo (modificado):\n" + prestamoClonado);
 
 
+        Prestamo prestamoShallow = prestamoOriginal.clone();      // Clonación superficial
+        Prestamo prestamoDeep = prestamoOriginal.deepClone();     // Clonación profunda
 
+        System.out.println("--- ESTADO INICIAL ---");
+        System.out.println("Original: " + prestamoOriginal);
+        System.out.println("Shallow:  " + prestamoShallow);
+        System.out.println("Deep:     " + prestamoDeep + "\n");
+
+
+        System.out.println("--- ACCIÓN: Creando un nuevo usuario 'Francisco Modificado' usando toBuilder() ---\n");
+
+        Usuario usuarioModificado = prestamoOriginal.getUsuario().toBuilder()
+                .nombre("Francisco Modificado")
+                .build();
+
+
+        prestamoOriginal.setUsuario(usuarioModificado);
+
+
+
+        System.out.println("--- ESTADO FINAL ---");
+        System.out.println("Original: " + prestamoOriginal);
+        System.out.println("Shallow:  " + prestamoShallow + " <-- ¡NO CAMBIÓ! Sigue apuntando al objeto Usuario original e inmutable.");
+        System.out.println("Deep:     " + prestamoDeep + " <-- TAMPOCO CAMBIÓ. Tiene su propia copia del objeto Usuario original.");
 
 
 
