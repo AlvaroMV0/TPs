@@ -1,7 +1,7 @@
 package bridge;
 
 public class BridgeMain {
-    public static void main (String[] args){
+    public static void main(String[] args) {
         System.out.println("\n\n- - - - - Patrón Bridge - - - - -\n");
 
         CanalEnvio canalEmail = new Email();
@@ -20,10 +20,10 @@ public class BridgeMain {
         Notificacion recordatorioPorEMail = new Recordatorio(new Email());
         recordatorioPorEMail.enviar();
 
-        Notificacion PromocionPorEmail = new Promocion (new Email());
+        Notificacion PromocionPorEmail = new Promocion(new Email());
         PromocionPorEmail.enviar();
 
-        Notificacion PromocionPorSms = new Promocion (new SMS());
+        Notificacion PromocionPorSms = new Promocion(new SMS());
         PromocionPorSms.enviar();
     }
 }

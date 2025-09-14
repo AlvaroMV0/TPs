@@ -24,7 +24,7 @@ public class CompositeMain {
         menuDia.agregar(postre); //Un menú dentro de otro (el Menú de Postres dentro del Menú del Día)
 
         // Mostramos el menú
-        menuDia.mostrar("");
+        menuDia.mostrar("  ");
 
 
     }

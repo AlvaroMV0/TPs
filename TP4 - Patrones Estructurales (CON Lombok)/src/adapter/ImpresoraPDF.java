@@ -6,7 +6,7 @@ package adapter;
 */
 
 public class ImpresoraPDF {
-    public static void imprimir(String documento){
+    public static void imprimir(String documento) {
         System.out.println("Imprimiendo " + documento + ".pdf");
     }
 }

@@ -11,36 +11,46 @@ public class Main {
 
         //1- Patron Adapter
         AdapterMain.main(null);
+        System.out.println("\n-----------");
         // ----
 
 
         //2- Bridge
         BridgeMain.main(null);
+        System.out.println("\n-----------");
         // ----
 
 
         //3- Patron Decorator
         DecoratorMain.main(null);
+        System.out.println("\n-----------");
         // ----
 
 
         //4- Facade
         FacadeMain.main(null);
+        System.out.println("\n-----------");
         // ----
 
-        //TODO: Descomentar para poder ver
+
         //5- Flyweight
-        //FlyweightMain.main(null);
+        FlyweightMain.main(null);
+        System.out.println("\n-----------");
         // ----
 
 
         //6- Proxy
         ProxyMain.main(null);
+        System.out.println("\n-----------");
         // ----
 
 
         //7- Composite
         CompositeMain.main(null);
+        System.out.println("\n-----------");
         // ----
+
+
+        System.out.println("\n\nFIN del programa...\n\n");
     }
 }
