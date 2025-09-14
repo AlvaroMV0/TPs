@@ -5,50 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f89d1e9e-810d-447e-bbd9-da3b01d07972" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../TP3 - Patrones Estructurales (SIN Lombok)/src/facade/TiendaFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP3 - Patrones Estructurales (SIN Lombok)/src/facade/TiendaFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP4 - Patrones Estructurales (CON Lombok).iml" beforeDir="false" afterPath="$PROJECT_DIR$/TP4 - Patrones Estructurales (CON Lombok).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/AdapterMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/AdapterMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/ImpresoraAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/ImpresoraAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/ImpresoraDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/ImpresoraDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/ImpresoraPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/ImpresoraPDF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapter/ImpresoraTexto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapter/ImpresoraTexto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/Alerta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/Alerta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/BridgeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/BridgeMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/CanalEnvio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/CanalEnvio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/Notificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/Notificacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/Promocion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/Promocion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/Recordatorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/Recordatorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/SMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/SMS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composite/CompositeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/composite/CompositeMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composite/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/composite/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composite/Plato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/composite/Plato.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorator/ConDescargasOffline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorator/ConDescargasOffline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorator/ConHD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorator/ConHD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorator/ConUltraHD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorator/ConUltraHD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorator/DecoratorMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorator/DecoratorMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorator/Plan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorator/Plan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorator/PlanBasico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorator/PlanBasico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorator/PlanDecorador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorator/PlanDecorador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/facade/Carrito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Carrito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/facade/Envio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Envio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/facade/FacadeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/FacadeMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/facade/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/Pago.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/facade/TiendaFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/facade/TiendaFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flyweight/Arbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flyweight/Arbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flyweight/ArbolConcreto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flyweight/ArbolConcreto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flyweight/FabricaArbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flyweight/FabricaArbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP3 - Patrones Estructurales (SIN Lombok)/src/flyweight/FlyweightMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP3 - Patrones Estructurales (SIN Lombok)/src/flyweight/FlyweightMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flyweight/FlyweightMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/flyweight/FlyweightMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxy/Archivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxy/Archivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxy/ArchivoProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxy/ArchivoProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxy/ArchivoReal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxy/ArchivoReal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +20,10 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="32h59r5cmNKa8hFyf2rYxHe0coH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -84,6 +43,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Projects/TPs/TP4 - Patrones Estructurales (CON Lombok)",
     "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>

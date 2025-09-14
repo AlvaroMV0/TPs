@@ -8,19 +8,19 @@ public class FlyweightMain {
         FabricaArbol fabrica = new FabricaArbol();
         for (int i = 0; i < 250000; i++) {
             Arbol arbol = fabrica.obtenerInfo("Nogal", "suave", "marron oscuro");
-            if (i > (250000 - 3) || i < 2) arbol.posicion(i, 0);
+            arbol.posicion(i, 0);
         }
         for (int i = 0; i < 250000; i++) {
             Arbol arbol = fabrica.obtenerInfo("Roble", "porosa", "marron");
-            if (i > (250000 - 3) || i < 2) arbol.posicion(i, 1);
+            arbol.posicion(i, 1);
         }
         for (int i = 0; i < 250000; i++) {
             Arbol arbol = fabrica.obtenerInfo("Acre", "uniforme", "blanco");
-            if (i > (250000 - 3) || i < 2) arbol.posicion(i, 2);
+            arbol.posicion(i, 2);
         }
         for (int i = 0; i < 250000; i++) {
             Arbol arbol = fabrica.obtenerInfo("Castaño", "irregular", "marron claro");
-            if (i > (250000 - 3) || i < 2) arbol.posicion(i, 3);
+            arbol.posicion(i, 3);
         }
     }
 }
