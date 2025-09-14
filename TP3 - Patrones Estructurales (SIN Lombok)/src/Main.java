@@ -30,7 +30,7 @@ public class Main {
 
         //TODO: Descomentar para poder ver
         //5- Flyweight
-        //FlyweightMain.main(null);
+        FlyweightMain.main(null);
         // ----
 
 

@@ -20,7 +20,7 @@ public class Menu implements ElementoMenu{
     public void mostrar(String indent) {
         System.out.println(indent + "+ Menú: " + nombre);
         for (ElementoMenu em : elementos) {
-            em.mostrar(indent + " ");
+            em.mostrar(indent );
         }
     }
 }

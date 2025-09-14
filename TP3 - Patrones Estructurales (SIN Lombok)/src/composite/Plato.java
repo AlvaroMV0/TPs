@@ -10,6 +10,6 @@ public class Plato implements ElementoMenu{
 
     @Override
     public void mostrar(String indent) {
-        System.out.println(indent + "- Plato: " + nombre);
+        System.out.println(indent + " - Plato: " + nombre);
     }
 }

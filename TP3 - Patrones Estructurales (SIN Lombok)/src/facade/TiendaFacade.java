@@ -17,10 +17,10 @@ public class TiendaFacade {
     private Pago pago;
     private Envio envio;
 
-    public TiendaFacade (Carrito carrito, Pago pago, Envio envio){
-        this.carrito = carrito;
-        this.pago = pago;
-        this.envio = envio;
+    public TiendaFacade (){
+        this.carrito = new Carrito();
+        this.envio = new Envio();
+        this.pago = new Pago();
     }
 
     public void comprar(String articulo){
