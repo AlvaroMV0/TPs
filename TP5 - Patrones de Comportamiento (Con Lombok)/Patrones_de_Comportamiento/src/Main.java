@@ -1,6 +1,7 @@
 import chain_of_Responsibility.MainCOR;
 import command.MainCommand;
 import iterator.MainIterator;
+import mediator.MainMediator;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +14,9 @@ public class Main {
 
         System.out.println("\n= = = = Iterator = = = =\n");
         MainIterator.main(null);
+
+        System.out.println("\n= = = = Mediator = = = =\n");
+        MainMediator.main(null);
 
     }
 }
