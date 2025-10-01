@@ -1,6 +1,6 @@
 package iterator;
 
-public class MainIterator {
+public class Iterator {
     public static void main(String[] args){
 
         Alumno alumno = Alumno.builder().nombre("Fran").build();

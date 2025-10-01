@@ -1,6 +1,6 @@
 package mediator;
 
-public class MainMediator {
+public class Mediator {
     public static void main(String[] args){
 
         ChatMediator sala = new ChatRoom();

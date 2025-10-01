@@ -1,6 +1,6 @@
 package command;
 
-public class MainCommand {
+public class Command {
     public static void main(String[] args){
         Invoker invoker = new Invoker(new InscribirseCursoCommand());
         invoker.execute();

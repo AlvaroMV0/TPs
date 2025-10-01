@@ -1,6 +1,6 @@
 package chain_of_Responsibility;
 
-public class MainCOR {
+public class Chain_Of_Responsibility {
     public static void main(String[] args){
 
         Asistente asistente = new Asistente();
