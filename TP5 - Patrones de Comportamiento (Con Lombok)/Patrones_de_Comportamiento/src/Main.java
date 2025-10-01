@@ -1,28 +1,28 @@
-import chain_of_Responsibility.Chain_Of_Responsibility;
-import command.Command;
-import iterator.Iterator;
-import mediator.Mediator;
+import chain_of_Responsibility.Chain_Of_Responsibility_Main;
+import command.CommandMain;
+import iterator.IteratorMain;
+import mediator.MediatorMain;
 import memento.MementoMain;
 import observer.ObserverMain;
-import state.State;
-import strategy.Strategy;
-import template_Method.Temple_Method;
-import visitor.Visitor;
+import state.StateMain;
+import strategy.StrategyMain;
+import template_Method.Temple_Method_Main;
+import visitor.VisitorMain;
 
 public class Main {
     public static void main(String[] args) {
 
         System.out.println("\n= = = = Chain Of Responsibility = = = =\n");
-        Chain_Of_Responsibility.main(null);
+        Chain_Of_Responsibility_Main.main(null);
 
         System.out.println("\n= = = = Command = = = =\n");
-        Command.main(null);
+        CommandMain.main(null);
 
         System.out.println("\n= = = = Iterator = = = =\n");
-        Iterator.main(null);
+        IteratorMain.main(null);
 
         System.out.println("\n= = = = Mediator = = = =\n");
-        Mediator.main(null);
+        MediatorMain.main(null);
 
         System.out.println("\n= = = = Memento = = = =\n");
         MementoMain.main(null);
@@ -31,15 +31,15 @@ public class Main {
         ObserverMain.main(null);
 
         System.out.println("\n= = = = State = = = =\n");
-        State.main(null);
+        StateMain.main(null);
 
         System.out.println("\n= = = = Strategy = = = =\n");
-        Strategy.main(null);
+        StrategyMain.main(null);
 
         System.out.println("\n= = = = Temple Method = = = =\n");
-        Temple_Method.main(null);
+        Temple_Method_Main.main(null);
 
         System.out.println("\n= = = = Visitor = = = =\n");
-        Visitor.main(null);
+        VisitorMain.main(null);
     }
 }

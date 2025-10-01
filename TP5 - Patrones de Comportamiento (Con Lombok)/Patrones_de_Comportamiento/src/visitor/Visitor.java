@@ -1,7 +1,6 @@
 package visitor;
 
-public class Visitor {
-    public static void main(String[] args){
-
-    }
+public interface Visitor {
+    void visitar(AlumnoRegular a);
+    void visitar(AlumnoBecado a);
 }
