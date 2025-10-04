@@ -11,5 +11,4 @@ public class Solicitud {
     private int nivelDeDificultad;
     private String nombreSolicitud;
     private String detalleSolicitud;
-
 }

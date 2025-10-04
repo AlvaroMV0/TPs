@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.CuentaBancariaTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-10-04T21:52:08.365Z" hostname="DESKTOP-J79MF1R" time="0.037">
+  <properties/>
+  <testcase name="testRetirarMasDelSaldo()" classname="org.example.CuentaBancariaTest" time="0.023"/>
+  <testcase name="testOperacionValidaFuncionaCorrectamente()" classname="org.example.CuentaBancariaTest" time="0.003"/>
+  <testcase name="testRetirarMenosDelMontoMinimoOperacional()" classname="org.example.CuentaBancariaTest" time="0.002"/>
+  <testcase name="testIngresarMenosDelMontoMinimoOperacional()" classname="org.example.CuentaBancariaTest" time="0.002"/>
+  <testcase name="testInicializarCuentaBancariaConClienteNull()" classname="org.example.CuentaBancariaTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
