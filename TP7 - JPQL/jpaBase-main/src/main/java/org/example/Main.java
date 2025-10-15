@@ -1,4 +1,3 @@
-
 package org.example;
 
 import funciones.FuncionApp;
@@ -85,14 +84,12 @@ public class Main {
                     build();
 
 
-
-
             // Agregar el ArticuloInsumo a la Categoria
             categoria.getArticulos().add(articuloInsumo);
             categoria.getArticulos().add(articuloInsumoPera);
             // Actualizar la entidad Categoria en la base de datos
 
-         // em.merge(categoria);
+            // em.merge(categoria);
 
             // Crear una nueva entidad ArticuloManufacturadoDetalle en estado "nueva"
             ArticuloManufacturadoDetalle detalleManzana = ArticuloManufacturadoDetalle.builder()
@@ -191,11 +188,74 @@ public class Main {
             }
 
 
+            //   em.getTransaction().begin();
+            //   em.remove(articuloManufacturado);
+            //    em.getTransaction().commit();
 
-             //   em.getTransaction().begin();
-             //   em.remove(articuloManufacturado);
-             //    em.getTransaction().commit();
 
+            // TRABAJO PRACTICO CONSULTAS JQPL
+
+            // Ejercicio 1: Listar todos los clientes
+
+
+
+            // Ejercicio 2: Listar todas las facturas generadas en el último mes
+
+
+
+            // Ejercicio 3: Obtener el cliente que ha generado más facturas
+
+
+
+            // Ejercicio 4: Listar los artículos más vendidos
+
+
+
+            // Ejercicio 5: Consultar las facturas emitidas en los 3 últimos meses de un cliente específico
+
+
+
+            // Ejercicio 6: Calcular el monto total facturado por un cliente
+
+
+
+            // Ejercicio 7: Listar los Artículos vendidos en una factura
+
+
+
+            // Ejercicio 8: Obtener el Artículo más caro vendido en una factura
+
+
+
+            // Ejercicio 9: Contar la cantidad total de facturas generadas en el sistema
+
+
+
+            // Ejercicio 10: Listar las facturas cuyo total es mayor a un valor determinado
+
+
+
+            // Ejercicio 11: Consultar las facturas que contienen un Artículo específico, filtrando por
+            // el nombre del artículo
+
+
+
+            // Ejercicio 12: Listar los Artículos filtrando por código parcial
+
+
+
+            // Ejercicio 13: Listar todos los Artículos cuyo precio sea mayor que el promedio de los
+            // precios de todos los Artículos
+
+
+
+            // Ejercicio 14: Explique y ejemplifique la cláusula EXISTS aplicando la misma en el
+            // modelo aplicado en el presente trabajo practico
+
+
+
+
+            // FIN TRABAJO PRÁCTICO
 
 
             // Cerrar el EntityManager y el EntityManagerFactory
