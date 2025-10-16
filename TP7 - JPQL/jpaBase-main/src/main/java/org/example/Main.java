@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,7 +50,7 @@ public class Main {
 
             // Crear una nueva entidad ArticuloInsumo en estado "nueva"
             ArticuloInsumo articuloInsumo = ArticuloInsumo.builder()
-                    .denominacion("Manzana").codigo(Long.toString(new Date().getTime()))
+                    .denominacion("Manzana").codigo(java.util.UUID.randomUUID().toString())
                     .precioCompra(1.5)
                     .precioVenta(5d)
                     .stockActual(100)
@@ -59,7 +61,7 @@ public class Main {
 
 
             ArticuloInsumo articuloInsumoPera = ArticuloInsumo.builder()
-                    .denominacion("Pera").codigo(Long.toString(new Date().getTime()))
+                    .denominacion("Pera").codigo(java.util.UUID.randomUUID().toString())
                     .precioCompra(2.5)
                     .precioVenta(10d)
                     .stockActual(130)
@@ -107,7 +109,7 @@ public class Main {
             ArticuloManufacturado articuloManufacturado = ArticuloManufacturado.builder()
                     .denominacion("Ensalada de frutas")
                     .descripcion("Ensalada de manzanas y peras ")
-                    .codigo(Long.toString(new Date().getTime()))
+                    .codigo(java.util.UUID.randomUUID().toString())
                     .precioVenta(150d)
                     .tiempoEstimadoMinutos(10)
                     .preparacion("Cortar las frutas en trozos pequeños y mezclar")
@@ -168,95 +170,91 @@ public class Main {
             em.persist(factura);
             em.getTransaction().commit();
 
-            // Crear la consulta SQL nativa
-            // Crear la consulta JPQL
-
-            String jpql = "SELECT am FROM ArticuloManufacturado am LEFT JOIN FETCH am.detalles d WHERE am.id = :id";
-            Query query = em.createQuery(jpql);
-            query.setParameter("id", 3L);
-            ArticuloManufacturado articuloManufacturadoCon = (ArticuloManufacturado) query.getSingleResult();
-
-            System.out.println("Artículo manufacturado: " + articuloManufacturado.getDenominacion());
-            System.out.println("Descripción: " + articuloManufacturado.getDescripcion());
-            System.out.println("Tiempo estimado: " + articuloManufacturado.getTiempoEstimadoMinutos() + " minutos");
-            System.out.println("Preparación: " + articuloManufacturado.getPreparacion());
-
-            System.out.println("Líneas de detalle:");
-            for (ArticuloManufacturadoDetalle detalle : articuloManufacturado.getDetalles()) {
-                System.out.println("- " + detalle.getCantidad() + " unidades de " + detalle.getArticuloInsumo().getDenominacion());
-
-            }
 
 
-            //   em.getTransaction().begin();
-            //   em.remove(articuloManufacturado);
-            //    em.getTransaction().commit();
 
+            // <-------------------------------------------------------------->
 
             // TRABAJO PRACTICO CONSULTAS JQPL
 
             // Ejercicio 1: Listar todos los clientes
 
-
+            Query query1 = em.createQuery("SELECT c FROM Cliente c");
+            List<Cliente> clientes = query1.getResultList();
+            System.out.println("Listando clientes...");
+            int i = 0;
+            for (Cliente c : clientes) {
+                i++;
+                System.out.println(i + ". " + c.getCuit());
+            }
+            System.out.println("Total de clientes: " + i);
 
             // Ejercicio 2: Listar todas las facturas generadas en el último mes
-
+            Query query2 = em.createQuery("SELECT f FROM Factura f WHERE f.fechaComprobante >= FUNCTION('DATEADD', 'MONTH', -1, CURRENT_DATE()) ");
+            List<Factura> facturas = query2.getResultList();
+            System.out.println("Listando facturas del ultimo mes...");
+            i = 0;
+            for (Factura f : facturas) {
+                i++;
+                System.out.println(i + ". " + f.getNroComprobante() + " realizada el " + f.getFechaComprobante());
+            }
+            System.out.println("Total de facturas del ultimo mes: " + i);
 
 
             // Ejercicio 3: Obtener el cliente que ha generado más facturas
+
+            Query query3_jpql = em.createQuery(
+                    "SELECT c FROM Cliente c JOIN c.facturas f GROUP BY c ORDER BY COUNT(f) DESC"
+            );
+            query3_jpql.setMaxResults(1);
+            Cliente resultadoCliente = (Cliente) query3_jpql.getSingleResult();
+            System.out.println("El cliente que ha generado más facturas es \""+ cliente.getCuit()+"\" (CUIT)" +
+                    ". Con un total de "+Optional.ofNullable(resultadoCliente)
+                    .map(Cliente::getFacturas)
+                    .map(List::size)           
+                    .orElse(0)  +" facturas.");
 
 
 
             // Ejercicio 4: Listar los artículos más vendidos
 
 
-
             // Ejercicio 5: Consultar las facturas emitidas en los 3 últimos meses de un cliente específico
-
 
 
             // Ejercicio 6: Calcular el monto total facturado por un cliente
 
 
-
             // Ejercicio 7: Listar los Artículos vendidos en una factura
-
 
 
             // Ejercicio 8: Obtener el Artículo más caro vendido en una factura
 
 
-
             // Ejercicio 9: Contar la cantidad total de facturas generadas en el sistema
 
 
-
             // Ejercicio 10: Listar las facturas cuyo total es mayor a un valor determinado
-
 
 
             // Ejercicio 11: Consultar las facturas que contienen un Artículo específico, filtrando por
             // el nombre del artículo
 
 
-
             // Ejercicio 12: Listar los Artículos filtrando por código parcial
-
 
 
             // Ejercicio 13: Listar todos los Artículos cuyo precio sea mayor que el promedio de los
             // precios de todos los Artículos
 
 
-
             // Ejercicio 14: Explique y ejemplifique la cláusula EXISTS aplicando la misma en el
             // modelo aplicado en el presente trabajo practico
 
 
-
-
             // FIN TRABAJO PRÁCTICO
 
+            // <-------------------------------------------------------------->
 
             // Cerrar el EntityManager y el EntityManagerFactory
             em.close();
