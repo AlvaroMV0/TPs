@@ -139,7 +139,7 @@ public class Main {
             //creo y guardo un cliente
             em.getTransaction().begin();
             Cliente cliente = Cliente.builder()
-                    .cuit(FuncionApp.generateRandomCUIT())
+                    .cuit("20123456789")
                     .razonSocial("Juan Perez")
                     .build();
             em.persist(cliente);
@@ -171,13 +171,12 @@ public class Main {
             em.getTransaction().commit();
 
 
-
-
             // <-------------------------------------------------------------->
 
             // TRABAJO PRACTICO CONSULTAS JQPL
 
             // Ejercicio 1: Listar todos los clientes
+            System.out.println(" ---- Ejercicio 1: Listar todos los clientes");
 
             Query query1 = em.createQuery("SELECT c FROM Cliente c");
             List<Cliente> clientes = query1.getResultList();
@@ -190,6 +189,8 @@ public class Main {
             System.out.println("Total de clientes: " + i);
 
             // Ejercicio 2: Listar todas las facturas generadas en el último mes
+            System.out.println(" ---- Ejercicio 2: Listar todas las facturas generadas en el último mes");
+
             Query query2 = em.createQuery("SELECT f FROM Factura f WHERE f.fechaComprobante >= FUNCTION('DATEADD', 'MONTH', -1, CURRENT_DATE()) ");
             List<Factura> facturas = query2.getResultList();
             System.out.println("Listando facturas del ultimo mes...");
@@ -202,54 +203,119 @@ public class Main {
 
 
             // Ejercicio 3: Obtener el cliente que ha generado más facturas
+            System.out.println("Ejercicio 3: Obtener el cliente que ha generado más facturas");
 
             Query query3_jpql = em.createQuery(
                     "SELECT c FROM Cliente c JOIN c.facturas f GROUP BY c ORDER BY COUNT(f) DESC"
             );
             query3_jpql.setMaxResults(1);
             Cliente resultadoCliente = (Cliente) query3_jpql.getSingleResult();
-            System.out.println("El cliente que ha generado más facturas es \""+ cliente.getCuit()+"\" (CUIT)" +
-                    ". Con un total de "+Optional.ofNullable(resultadoCliente)
+            System.out.println("El cliente que ha generado más facturas es \"" + cliente.getCuit() + "\" (CUIT)" +
+                    ". Con un total de " + Optional.ofNullable(resultadoCliente)
                     .map(Cliente::getFacturas)
-                    .map(List::size)           
-                    .orElse(0)  +" facturas.");
-
+                    .map(List::size)
+                    .orElse(0) + " facturas.");
 
 
             // Ejercicio 4: Listar los artículos más vendidos
+            System.out.println("Ejercicio 4: Listar los artículos más vendidos");
+
+            Query query4_jpql = em.createQuery(
+                    "SELECT fd.articulo, SUM(fd.cantidad) " +
+                            "FROM FacturaDetalle fd " +
+                            "GROUP BY fd.articulo " +
+                            "ORDER BY SUM(fd.cantidad) DESC"
+            );
+
+            query4_jpql.setMaxResults(5);
+
+            List<Object[]> resultadoVentas = query4_jpql.getResultList();
+
+            if (resultadoVentas.isEmpty()) {
+                System.out.println("No se encontraron artículos vendidos.");
+            } else {
+                for (int index = 0; index < resultadoVentas.size(); index++) {
+                    Articulo articulo = (Articulo) resultadoVentas.get(index)[0];
+                    Number cantidadVendida = (Number) resultadoVentas.get(index)[1];
+
+                    System.out.println(
+                            (index + 1) + ". " + articulo.getDenominacion() +
+                                    " (Cantidad total vendida: " + cantidadVendida + ")"
+                    );
+                }
+            }
 
 
             // Ejercicio 5: Consultar las facturas emitidas en los 3 últimos meses de un cliente específico
+            System.out.println("Ejercicio 5: Consultar las facturas emitidas en los 3 últimos meses de un cliente específico");
+
+            Query query5_jpql = em.createQuery("SELECT f FROM Factura f WHERE f.cliente.cuit = :cuit AND f.fechaComprobante >= FUNCTION('DATEADD', 'MONTH', -3, CURRENT_DATE()) ");
+            query5_jpql.setParameter("cuit", "20123456789");
+
+            List<Factura> resultadosFactura = query5_jpql.getResultList();
+            i=0;
+            for ( Factura f : resultadosFactura){
+                i++;
+                System.out.println(i+". "+f);
+            }
+
+
 
 
             // Ejercicio 6: Calcular el monto total facturado por un cliente
+            System.out.println("Ejercicio 6: Calcular el monto total facturado por un cliente");
+
 
 
             // Ejercicio 7: Listar los Artículos vendidos en una factura
+            System.out.println("Ejercicio 7: Listar los Artículos vendidos en una factura");
+
 
 
             // Ejercicio 8: Obtener el Artículo más caro vendido en una factura
+            System.out.println("Ejercicio 8: Obtener el Artículo más caro vendido en una factura");
+
 
 
             // Ejercicio 9: Contar la cantidad total de facturas generadas en el sistema
+            System.out.println("Ejercicio 9: Contar la cantidad total de facturas generadas en el sistema");
+
+
 
 
             // Ejercicio 10: Listar las facturas cuyo total es mayor a un valor determinado
+            System.out.println("Ejercicio 10: Listar las facturas cuyo total es mayor a un valor determinado");
 
 
-            // Ejercicio 11: Consultar las facturas que contienen un Artículo específico, filtrando por
-            // el nombre del artículo
+
+
+            // Ejercicio 11: Consultar las facturas que contienen un Artículo específico, filtrando por el nombre del artículo
+            System.out.println("Ejercicio 11: Consultar las facturas que contienen un Artículo específico, filtrando por el nombre del artículo");
+
+
 
 
             // Ejercicio 12: Listar los Artículos filtrando por código parcial
+            System.out.println("Ejercicio 12: Listar los Artículos filtrando por código parcial");
 
 
-            // Ejercicio 13: Listar todos los Artículos cuyo precio sea mayor que el promedio de los
-            // precios de todos los Artículos
 
 
-            // Ejercicio 14: Explique y ejemplifique la cláusula EXISTS aplicando la misma en el
-            // modelo aplicado en el presente trabajo practico
+
+            // Ejercicio 13: Listar todos los Artículos cuyo precio sea mayor que el promedio de los precios de todos los Artículos
+            System.out.println("Ejercicio 13: Listar todos los Artículos cuyo precio sea mayor que el promedio de los precios de todos los Artículos");
+
+
+
+
+
+            // Ejercicio 14: Explique y ejemplifique la cláusula EXISTS aplicando la misma en el modelo aplicado en el presente trabajo practico
+            System.out.println("Ejercicio 14: Explique y ejemplifique la cláusula EXISTS aplicando la misma en el modelo aplicado en el presente trabajo practico");
+
+
+
+
+            
 
 
             // FIN TRABAJO PRÁCTICO
