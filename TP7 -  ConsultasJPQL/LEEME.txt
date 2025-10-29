@@ -1,0 +1,11 @@
+En este proyecto se desarrollan las actividades solicitadas en el TP "Consultas de JPQL"
+
+La base de datos se encuentra en el archivo "db.mv" dentro de la carpeta "data"
+
+Para correr el programa ejecuta la clase Main dentro del directorio "org.example"
+
+Integrantes del grupo:
+    50771 Araya Tejo
+    50837 Castignani Francisco
+    51185 Martín Araceli
+    50991 Moreno Álvaro
