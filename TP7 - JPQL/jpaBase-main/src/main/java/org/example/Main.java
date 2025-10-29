@@ -214,19 +214,29 @@ public class Main {
             System.out.println("Total de facturas del ultimo mes: " + i);
 
 
-            // Ejercicio 3: Obtener el cliente que ha generado más facturas
+            // Ejercicio 3: Obtener el cliente que ha generado más facturas (Versión optimizada)
             System.out.println("Ejercicio 3: Obtener el cliente que ha generado más facturas");
 
+
             Query query3_jpql = em.createQuery(
-                    "SELECT c FROM Cliente c JOIN c.facturas f GROUP BY c ORDER BY COUNT(f) DESC"
+                    "SELECT c, COUNT(f) FROM Cliente c " +
+                            "JOIN c.facturas f " +
+                            "GROUP BY c " +
+                            "ORDER BY COUNT(f) DESC"
             );
             query3_jpql.setMaxResults(1);
-            Cliente resultadoCliente = (Cliente) query3_jpql.getSingleResult();
-            System.out.println("El cliente que ha generado más facturas es \"" + cliente.getCuit() + "\" (CUIT)" +
-                    ". Con un total de " + Optional.ofNullable(resultadoCliente)
-                    .map(Cliente::getFacturas)
-                    .map(List::size)
-                    .orElse(0) + " facturas.");
+
+
+            Object[] resultado = (Object[]) query3_jpql.getSingleResult();
+
+
+            Cliente clienteConMasFacturas = (Cliente) resultado[0];
+            Long cantidadDeFacturas = (Long) resultado[1];
+
+
+
+            System.out.println("El cliente que ha generado más facturas es \"" + clienteConMasFacturas.getCuit() + "\" (CUIT)" +
+                    ". Con un total de " + cantidadDeFacturas + " facturas.");
 
 
             // Ejercicio 4: Listar los artículos más vendidos
@@ -272,8 +282,6 @@ public class Main {
             }
 
 
-
-
             // Ejercicio 6: Calcular el monto total facturado por un cliente
             System.out.println("Ejercicio 6: Calcular el monto total facturado por un cliente");
 
@@ -286,52 +294,90 @@ public class Main {
             // Ejercicio 7: Listar los Artículos vendidos en una factura
             System.out.println("Ejercicio 7: Listar los Artículos vendidos en una factura");
 
-            Query query7_jpql = em.createQuery("SELECT a FROM facturas f JOIN f.detallesFactura d JOIN d.articulo a WHERE f.nrocomprobante = :nrocomprobante");
-            query7_jpql.setParameter("nrocomprobante", 223L);
+            Query query7_jpql = em.createQuery("SELECT a FROM Factura f JOIN f.detallesFactura d JOIN d.articulo a WHERE f.nroComprobante = :nroComprobante");
+            query7_jpql.setParameter("nroComprobante", 233L);
 
             List<Articulo> resultados7 = query7_jpql.getResultList();
+            System.out.println("Los articulos de la factura 233, son: ");
             System.out.println(resultados7.stream().map(Articulo::getDenominacion).collect(Collectors.joining(",","[","]")));
 
 
             // Ejercicio 8: Obtener el Artículo más caro vendido en una factura
             System.out.println("Ejercicio 8: Obtener el Artículo más caro vendido en una factura");
 
+            Query query8 = em.createQuery("SELECT a FROM Factura f JOIN f.detallesFactura d JOIN d.articulo a WHERE f.nroComprobante = :nroComprobante ORDER BY a.precioVenta DESC");
+            query8.setParameter("nroComprobante", 233L);
+            query8.setMaxResults(1);
+            Articulo resultado8 = (Articulo) query8.getSingleResult();
+
+            System.out.println("El articulo más caro vendido en la factura con nro de comprobante 223, es: " + resultado8.getDenominacion());
+
 
 
             // Ejercicio 9: Contar la cantidad total de facturas generadas en el sistema
             System.out.println("Ejercicio 9: Contar la cantidad total de facturas generadas en el sistema");
 
+            Query query9 = em.createQuery("SELECT COUNT(f) FROM Factura f");
+
+            Long res9 = (Long) query9.getSingleResult();
+
+            System.out.println("La cantidad total de facturas generadas en el sistema es: " + res9);
 
 
 
             // Ejercicio 10: Listar las facturas cuyo total es mayor a un valor determinado
             System.out.println("Ejercicio 10: Listar las facturas cuyo total es mayor a un valor determinado");
 
+            Query query10 = em.createQuery("SELECT f FROM Factura f WHERE f.total > :facturastotal");
+            query10.setParameter("facturastotal", 1d);
 
+            List<Factura> res10 = query10.getResultList();
+
+            System.out.println("Las facturas cuyo total excede 10 son: " + res10.stream().map(Factura::getNroComprobante).map(String::valueOf).collect(Collectors.joining(",","[","]")));
 
 
             // Ejercicio 11: Consultar las facturas que contienen un Artículo específico, filtrando por el nombre del artículo
             System.out.println("Ejercicio 11: Consultar las facturas que contienen un Artículo específico, filtrando por el nombre del artículo");
 
+            Query query11 = em.createQuery(
+                    "SELECT DISTINCT f FROM Factura f " +
+                            "JOIN f.detallesFactura d " +
+                            "JOIN d.articulo a " +
+                            "WHERE a.denominacion = :denominacion"
+            );
+            query11.setParameter("denominacion", "Manzana");
+
+            List<Factura> res11 = query11.getResultList();
+
+
+            System.out.println("Las facturas (NroComprobante) que contienen el artículo \"Manzana\" son: " +
+                    res11.stream()
+                            .map(Factura::getNroComprobante) // -> Obtiene el Long del NroComprobante
+                            .map(String::valueOf)            // -> Convierte el Long a String
+                            .collect(Collectors.joining(",", "[", "]"))
+            );
 
 
 
             // Ejercicio 12: Listar los Artículos filtrando por código parcial
             System.out.println("Ejercicio 12: Listar los Artículos filtrando por código parcial");
 
-
+            Query query12 = em.createQuery("");
 
 
 
             // Ejercicio 13: Listar todos los Artículos cuyo precio sea mayor que el promedio de los precios de todos los Artículos
             System.out.println("Ejercicio 13: Listar todos los Artículos cuyo precio sea mayor que el promedio de los precios de todos los Artículos");
 
+            Query query13 = em.createQuery("");
 
 
 
 
             // Ejercicio 14: Explique y ejemplifique la cláusula EXISTS aplicando la misma en el modelo aplicado en el presente trabajo practico
             System.out.println("Ejercicio 14: Explique y ejemplifique la cláusula EXISTS aplicando la misma en el modelo aplicado en el presente trabajo practico");
+
+            Query query14 = em.createQuery("");
 
 
 
