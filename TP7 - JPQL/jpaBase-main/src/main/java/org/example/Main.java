@@ -2,16 +2,28 @@ package org.example;
 
 import funciones.FuncionApp;
 
+import org.h2.tools.Server;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 public class Main {
     public static void main(String[] args) {
+//        try {
+//            Server.createWebServer("-web", "-webAllowOthers", "-webPort", "8082").start();
+//            System.out.println("H2 Console started at http://localhost:8082");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         try {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("example-unit");
             EntityManager em = emf.createEntityManager();
@@ -160,7 +172,7 @@ public class Main {
                     .fechaAlta(new Date())
                     .fechaComprobante(FuncionApp.generateRandomDate())
                     .cliente(cliente)
-                    .nroComprobante(FuncionApp.generateRandomNumber())
+                    .nroComprobante(233L)
                     .build();
             factura.addDetalleFactura(detalle1);
             factura.addDetalleFactura(detalle2);
@@ -265,11 +277,20 @@ public class Main {
             // Ejercicio 6: Calcular el monto total facturado por un cliente
             System.out.println("Ejercicio 6: Calcular el monto total facturado por un cliente");
 
+            Query query6_jpql = em.createQuery("SELECT SUM(f.total) FROM Factura f WHERE f.cliente.cuit = :cuit");
+            query6_jpql.setParameter("cuit", "20123456789");
+
+            System.out.println("El monto generado por el cliente cuyo cuit es 20123456789, es de: "+ query6_jpql.getSingleResult());
 
 
             // Ejercicio 7: Listar los Artículos vendidos en una factura
             System.out.println("Ejercicio 7: Listar los Artículos vendidos en una factura");
 
+            Query query7_jpql = em.createQuery("SELECT a FROM facturas f JOIN f.detallesFactura d JOIN d.articulo a WHERE f.nrocomprobante = :nrocomprobante");
+            query7_jpql.setParameter("nrocomprobante", 223L);
+
+            List<Articulo> resultados7 = query7_jpql.getResultList();
+            System.out.println(resultados7.stream().map(Articulo::getDenominacion).collect(Collectors.joining(",","[","]")));
 
 
             // Ejercicio 8: Obtener el Artículo más caro vendido en una factura
@@ -315,7 +336,7 @@ public class Main {
 
 
 
-            
+
 
 
             // FIN TRABAJO PRÁCTICO
